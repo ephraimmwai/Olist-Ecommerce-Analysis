@@ -1,0 +1,70 @@
+
+version: 2
+
+sources:
+  - name: olist_store
+    database: denotedataltd
+    schema: olist_store
+    tables:
+      - name: olist_customers
+      - name: olist_products
+      - name: olist_order_items
+      - name: olist_orders
+      - name: olist_order_payments
+      - name: olist_order_reviews
+      - name: olist_sellers
+      - name: olist_geolocation
+      - name: product_category_name_translation
+
+models:
+    - name: olist_customers
+      description: "Customers"
+      columns:
+          - name: customer_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: olist_order_items
+      description: "Order items"
+      columns:
+        - name: order_id
+          description: "primary key for order items"
+          tests:
+            - unique
+            - not_null
+        - name: product_id
+          description: " foreign key to olist products - product_id"
+        - name: seller_id
+          description: "foreign key to olist sellers - seller_id"
+    - name: olist_sellers
+      description: "distinct product sellers on olist store"
+      columns:
+        - name: seller_id
+          description: "primary key for olist sellers"
+          tests:
+            - unique
+            - not_null
+    - name: olist_products
+      description: "list of products with product details"
+      columns:
+        - name: product_id
+          description: "primary key for product items"
+          tests:
+            - unique
+            - not_null
+    - name: olist_orders
+      description: ""
+      columns:
+        - name: order_id
+          description: "primary key for orders"
+          tests:
+            - unique
+            - not_null
+    - name: olist_order_payments
+      description: "payment transactions on orders"
+    - name: olist_product_category_name_translation
+      description: "product name translation to English"
+    
+
