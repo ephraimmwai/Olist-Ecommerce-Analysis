@@ -33,6 +33,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   olist_ecommerce_analysis:
-    # Applies to all files under models/example/
-    sources:
+    # Applies to all files under models/
+    staging:
+      tags: ['staging_tag']
+      materialized: view
+      schema: Staging
+    marts:
+      tag: ['marts_tag']
       materialized: table
+      schema: Analytics

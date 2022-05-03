@@ -1,6 +1,6 @@
 # Olist-Ecommerce-Analysis
 #### Analytics Engineering
-This project is an implementation of the Modern Data Stack on analytical engineering.
+This project is an implementation of the Modern Data Stack in analytical engineering.
 
 ##### Data Stack
 - Fivetran - pipeline tool
