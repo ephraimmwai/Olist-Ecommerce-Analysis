@@ -30,10 +30,7 @@ models:
       description: "Order items"
       columns:
         - name: order_id
-          description: "primary key for order items"
-          tests:
-            - unique
-            - not_null
+          description: "order id. an order can have multiple order items"
         - name: product_id
           description: " foreign key to olist products - product_id"
         - name: seller_id
