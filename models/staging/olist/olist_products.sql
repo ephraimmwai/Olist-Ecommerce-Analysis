@@ -1,12 +1,11 @@
-SELECT
-  product_id,
-  product_category_name,
-  product_width_cm,
-  product_length_cm,
-  product_name_lenght,
-  product_photos_qty,
-  product_weight_g,
-  product_height_cm,
-  product_description_lenght
-FROM
-  {{ source('olist_store','olist_products')}}
+with
+  /* translate product category into English */	
+  products as (
+    select 
+      p.product_id
+      ,p.product_category_name
+      ,t.product_category_name_english as product_category
+    from {{ source('olist_store','olist_products')}} as p 
+    left join {{ ref('olist_product_category_name_translation') }} as t on p.product_category_name=t.product_category_name
+  )
+select * from products
