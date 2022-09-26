@@ -3,7 +3,7 @@ version: 2
 
 sources:
   - name: olist_store
-    database: denotedataltd
+    database: dark-garden-229909
     schema: olist_store
     tables:
       - name: olist_customers
