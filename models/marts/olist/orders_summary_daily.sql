@@ -1,11 +1,14 @@
 with 
     /* filter delivered orders */
     orders as (
-        select * from {{ ref('olist_orders') }}
+        select * 
+        from {{ ref('olist_orders') }}
+        {{ limit_data_in_dev('order_purchase_date',30) }}
     )
 
     ,order_items as (
-        select * from {{ ref('olist_order_items') }}
+        select * 
+        from {{ ref('olist_order_items') }}
     )
 
     /* translated product category into English */		
@@ -26,7 +29,7 @@ with
         from orders
         left join order_items on orders.order_id=order_items.order_id
         left join products on order_items.product_id=products.product_id
-
+    
     )
 
     /*  product_category_revenue = aggregated(sum) revenue by order purchase date and product category. */
